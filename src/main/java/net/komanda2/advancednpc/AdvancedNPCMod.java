@@ -1,9 +1,13 @@
 package net.komanda2.advancednpc;
 
 import com.mojang.logging.LogUtils;
+import net.komanda2.advancednpc.init.EntityInit;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.VillagerRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,15 +29,17 @@ public class AdvancedNPCMod
     private static final Logger LOGGER = LogUtils.getLogger();
     public AdvancedNPCMod()
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        modEventBus.addListener(this::commonSetup);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        EntityInit.ENTITIES.register(bus);
+        /*
+        bus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        modEventBus.addListener(this::addCreative);
+        bus.addListener(this::addCreative);
+        */
     }
-
+/*
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
@@ -62,4 +68,6 @@ public class AdvancedNPCMod
 
         }
     }
+
+ */
 }
